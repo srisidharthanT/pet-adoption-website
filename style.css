@@ -1,0 +1,31 @@
+/* External CSS */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fdf6f0;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #ff914d;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+nav {
+    background-color: #ffe5d0;
+    padding: 10px;
+    text-align: center;
+}
+
+nav a {
+    margin: 15px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+iframe {
+    border: 2px solid #ff914d;
+}

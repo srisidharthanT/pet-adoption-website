@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Happy Paws - Pet Adoption</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Embedded CSS -->
+    <style>
+        .content {
+            display: flex;
+            padding: 20px;
+        }
+
+        .map-section {
+            width: 50%;
+        }
+
+        .frame-section {
+            width: 50%;
+            padding-left: 20px;
+        }
+
+        footer {
+            background-color: #ff914d;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🐾 Happy Paws Pet Adoption Center</h1>
+    <p>Find your forever friend</p>
+</header>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Adopt</a>
+    <a href="#">Donate</a>
+    <a href="#">Contact</a>
+</nav>
+
+<div class="content">
+
+    <!-- Image Map with Hotspots -->
+    <div class="map-section">
+        <h2>Choose Your Pet</h2>
+
+        <img src="pets.jpg" alt="Pets Available" width="400" height="300" usemap="#petmap">
+
+        <map name="petmap">
+            <area shape="rect" coords="0,0,200,150" href="dog.html" alt="Dog">
+            <area shape="rect" coords="200,0,400,150" href="cat.html" alt="Cat">
+            <area shape="rect" coords="0,150,200,300" href="rabbit.html" alt="Rabbit">
+            <area shape="rect" coords="200,150,400,300" href="bird.html" alt="Bird">
+        </map>
+
+        <!-- Inline CSS -->
+        <p style="color: #ff914d; font-weight: bold;">
+            Click on a pet to learn more and adopt!
+        </p>
+    </div>
+
+    <!-- Frame Section -->
+    <div class="frame-section">
+        <h2>Pet Details</h2>
+
+        <iframe src="welcome.html" width="100%" height="300"></iframe>
+    </div>
+
+</div>
+
+<footer>
+    <p>© 2026 Happy Paws Adoption Center</p>
+</footer>
+
+</body>
+</html>
