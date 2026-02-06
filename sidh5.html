@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetPal Adoption Portal</title>
+    <style>
+        :root {
+            --primary: #6c5ce7;
+            --secondary: #00cec9;
+            --accent: #ff7675;
+            --bg-light: #fdfdfd;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: var(--bg-light);
+        }
+
+        /* --- 1. LOGIN PAGE (DOODLE STYLE) --- */
+        #login-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffffff;
+            /* Hand-drawn style polka dot background */
+            background-image: radial-gradient(circle, #6c5ce7 1.5px, transparent 1.5px);
+            background-size: 30px 30px;
+        }
+
+        .login-box {
+            background: white;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            border: 4px solid var(--primary);
+            text-align: center;
+            width: 320px;
+        }
+
+        /* --- 2. ADOPTION INTERFACE --- */
+        #adoption-interface, #form-page, #thank-you {
+            display: none;
+            padding: 40px 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .pet-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+            overflow: hidden;
+            border: 2px solid transparent;
+            transition: 0.3s ease;
+        }
+
+        .pet-card:hover { 
+            transform: translateY(-8px);
+            border-color: var(--secondary);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        }
+
+        .pet-card img { 
+            width: 100%; 
+            height: 240px; 
+            object-fit: cover; 
+        }
+
+        .details { padding: 20px; text-align: center; }
+        .details h3 { margin: 5px 0; color: #2d3436; font-size: 1.5rem; }
+        .details p { color: #636e72; margin: 8px 0; font-size: 15px; }
+
+        /* --- UI ELEMENTS --- */
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            box-sizing: border-box;
+            outline-color: var(--primary);
+        }
+
+        .btn {
+            background: var(--primary);
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            font-size: 16px;
+            transition: 0.2s;
+        }
+
+        .btn:hover { filter: brightness(1.1); }
+        .btn-adopt { background: var(--secondary); margin-top: 10px; }
+        .btn-back { background: #dfe6e9; color: #636e72; margin-top: 10px; }
+
+        /* --- THANK YOU --- */
+        .thank-you-box { text-align: center; margin-top: 100px; }
+    </style>
+</head>
+<body>
+
+    <div id="login-page">
+        <div class="login-box">
+            <h1 style="color:var(--primary); font-size: 45px; margin-bottom: 10px;">🐶</h1>
+            <h2 style="margin: 0;">Welcome Home</h2>
+            <p style="color:#666; margin-bottom: 20px;">Find your fur-ever friend</p>
+            <input type="text" placeholder="Username">
+            <input type="password" placeholder="Password">
+            <button class="btn" onclick="navigateTo('adoption-interface')">Log In</button>
+        </div>
+    </div>
+
+    <div id="adoption-interface">
+        <h1 style="text-align: center; color: var(--primary);">Available Pets for Adoption</h1>
+        <div class="grid">
+            <div class="pet-card">
+                <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=600" alt="Cat">
+                <div class="details">
+                    <h3>Whiskers</h3>
+                    <p><b>Breed:</b> Tabby Cat | <b>Age:</b> 2 Years</p>
+                    <button class="btn btn-adopt" onclick="openForm('Whiskers')">Adopt Me</button>
+                </div>
+            </div>
+
+            <div class="pet-card">
+                <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?q=80&w=600" alt="Dog">
+                <div class="details">
+                    <h3>Cooper</h3>
+                    <p><b>Breed:</b> Beagle Mix | <b>Age:</b> 3 Years</p>
+                    <button class="btn btn-adopt" onclick="openForm('Cooper')">Adopt Me</button>
+                </div>
+            </div>
+
+            <div class="pet-card">
+                <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?q=80&w=600" alt="Golden Dog">
+                <div class="details">
+                    <h3>Max</h3>
+                    <p><b>Breed:</b> Golden Retriever | <b>Age:</b> 4 Years</p>
+                    <button class="btn btn-adopt" onclick="openForm('Max')">Adopt Me</button>
+                </div>
+            </div>
+
+            <div class="pet-card">
+                <img src="https://images.unsplash.com/photo-1585111058244-67454642949f?q=80&w=600" alt="Rabbit">
+                <div class="details">
+                    <h3>Snowball</h3>
+                    <p><b>Breed:</b> White Bunny | <b>Age:</b> 1 Year</p>
+                    <button class="btn btn-adopt" onclick="openForm('Snowball')">Adopt Me</button>
+                </div>
+            </div>
+
+            <div class="pet-card">
+                <img src="https://images.unsplash.com/photo-1548767797-d8c844163c4c?q=80&w=600" alt="Hamster">
+                <div class="details">
+                    <h3>Pip</h3>
+                    <p><b>Breed:</b> Golden Hamster | <b>Age:</b> 8 Months</p>
+                    <button class="btn btn-adopt" onclick="openForm('Pip')">Adopt Me</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="form-page">
+        <div class="form-container">
+            <h2 id="form-title" style="text-align: center; color: var(--primary);">Adoption Form</h2>
+            <div style="background: white; padding: 25px; border-radius: 15px; border: 2px solid #eee;">
+                <input type="text" placeholder="Full Name">
+                <input type="email" placeholder="Email Address">
+                <input type="tel" placeholder="Phone Number">
+                <select>
+                    <option>Why do you want to adopt?</option>
+                    <option>First time owner</option>
+                    <option>Looking for a companion</option>
+                    <option>Gift for family</option>
+                </select>
+                <button class="btn" onclick="navigateTo('thank-you')">Submit My Application</button>
+                <button class="btn btn-back" onclick="navigateTo('adoption-interface')">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="thank-you">
+        <div class="thank-you-box">
+            <h1 style="font-size: 70px; margin-bottom: 0;">❤️</h1>
+            <h1 style="color: var(--primary);">Thank you for your adoption!</h1>
+            <p style="font-size: 19px; color: #555; line-height: 1.6;">
+                We have received your request. <br> 
+                Our team will review your application and contact you as soon as possible.
+            </p>
+            <br>
+            <button class="btn" style="width: auto; padding: 15px 50px;" onclick="location.reload()">Return Home</button>
+        </div>
+    </div>
+
+    <script>
+        function navigateTo(id) {
+            // Hide all pages
+            document.getElementById('login-page').style.display = 'none';
+            document.getElementById('adoption-interface').style.display = 'none';
+            document.getElementById('form-page').style.display = 'none';
+            document.getElementById('thank-you').style.display = 'none';
+            
+            // Show target page
+            document.getElementById(id).style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+
+        function openForm(petName) {
+            document.getElementById('form-title').innerText = "Form to Adopt " + petName;
+            navigateTo('form-page');
+        }
+    </script>
+
+</body>
+</html>
